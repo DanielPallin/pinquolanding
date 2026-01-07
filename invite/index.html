@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>You were quoted on PinQuo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Join PinQuo to accept your quote." />
+
+  <!-- iOS deep linking hint -->
+  <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <main class="card">
+    <div class="emoji">📌</div>
+
+    <h1>You were quoted</h1>
+    <p class="subtitle">
+      Someone saved your words on <strong>PinQuo</strong>
+    </p>
+
+    <div id="quoteBox" class="quote hidden">
+      “<span id="quoteText">Loading…</span>”
+    </div>
+
+    <button id="openAppBtn">
+      Open PinQuo
+    </button>
+
+    <p class="hint">
+      No app yet? We’ll take you there 🚀
+    </p>
+  </main>
+
+  <script src="invite.js"></script>
+</body>
+</html>
