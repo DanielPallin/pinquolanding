@@ -1,23 +1,31 @@
 (function () {
   const params = new URLSearchParams(window.location.search);
+
+  // Only run for invite links
+  if (params.get("invite") !== "1") return;
+
   const quoteId = params.get("quote_id");
   const email = params.get("email");
 
-  if (!quoteId || !email) return;
+  if (!quoteId) return;
 
-  const deepLink = `https://pinquo.app/invite?quote_id=${quote_id}&email=${encodeURIComponent(email)}`;
+  // ✅ Correct deep link (APP SCHEME, NOT WEBSITE)
+  const deepLink =
+    `pinquo://invite?quote_id=${quoteId}` +
+    (email ? `&email=${encodeURIComponent(email)}` : "");
 
-  // Try opening app
+  // Try opening the app
   window.location.href = deepLink;
 
-  // Fallback after 1.5s
+  // Fallback to store after 1.5s
   setTimeout(() => {
     const ua = navigator.userAgent.toLowerCase();
 
     if (ua.includes("iphone") || ua.includes("ipad")) {
       window.location.href = "https://apps.apple.com/app/idYOUR_APP_ID";
     } else if (ua.includes("android")) {
-      window.location.href = "https://play.google.com/store/apps/details?id=YOUR_PACKAGE";
+      window.location.href =
+        "https://play.google.com/store/apps/details?id=YOUR_PACKAGE";
     }
   }, 1500);
 })();
