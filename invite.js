@@ -5,7 +5,7 @@
 
   if (!quoteId || !email) return;
 
-  const deepLink = `pinquo://invite?quote_id=${quoteId}&email=${encodeURIComponent(email)}`;
+  const deepLink = `https://pinquo.app/invite?quote_id=${quote_id}&email=${encodeURIComponent(email)}`;
 
   // Try opening app
   window.location.href = deepLink;
